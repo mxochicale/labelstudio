@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  label-studio:
+    image: heartexlabs/label-studio:latest
+    container_name: label-studio
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./mydata:/label-studio/data
+      - ./myfiles:/label-studio/files
+      - ./myproject:/label-studio/project
+    environment:
+      - LABEL_STUDIO_LOCAL_FILES_SERVING_ENABLED=true
+      - LABEL_STUDIO_LOCAL_FILES_DOCUMENT_ROOT=/label-studio/files
+    command: >
+      sh -c "
+      if [ ! -f /label-studio/project/config.xml ]; then
+        label-studio init 'READY' --username user@email.com --password Password --initial-project-description 'Annotate READY images.' --label-config /label-studio/project/config.xml;
+      fi &&
+        label-studio start READY --username user@email.com --password Password
+      "
+    restart: unless-stopped
