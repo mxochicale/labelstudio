@@ -75,10 +75,7 @@ Absolute local path (inside container) = `/label-studio/files/ready`  [Test conn
     Scan all sub-folders: ON  [Load preview], [Next]
 4. Review & Confirm: `Save & Sync`
 
-![fig](fig_add_sources.png)
-
-
-
+![fig](fig_sync_storage.png)
 
 
 

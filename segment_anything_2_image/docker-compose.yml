@@ -42,12 +42,16 @@ services:
       # Do not use 'localhost' as it does not work within Docker containers.
       # Use prefix 'http://' or 'https://' for the URL always.
       # Determine the actual IP using 'ifconfig' (Linux/Mac) or 'ipconfig' (Windows).
-      - LABEL_STUDIO_URL=http://0.0.0.0:8080
-      - LABEL_STUDIO_API_KEY=
+      # - LABEL_STUDIO_URL=http://localhost:8080
+      # - LABEL_STUDIO_URL=http://0.0.0.0:9090
+      # - LABEL_STUDIO_URL=http://label-studio:8080
+      - LABEL_STUDIO_URL=http://host.docker.internal:9090
+      - LABEL_STUDIO_API_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6ODA2ODU0OTkwNCwiaWF0IjoxNzYxMzQ5OTA0LCJqdGkiOiI4MzZlNDFiZjg5MGI0ZmJlYTE3YTYwMDdmNmE3MTI4YyIsInVzZXJfaWQiOjF9.ZYq-R2QfBV_e_8BGH1rK6rqCfzVhnzgCudvuM7e0ay0
       # - LABEL_STUDIO_USE_REDIS=true
       # > Redis is an in-memory database; it's not meant to store a large amount of data.
       # > https://labelstud.io/integrations/databases/redis/
     ports:
+      # - "8080:8080"
       - "9090:9090"
     volumes:
       # - "./data/server:/data"
